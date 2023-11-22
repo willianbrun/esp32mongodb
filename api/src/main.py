@@ -1,47 +1,43 @@
-'''
-@author Homero Kemmerich
-'''
-
 from fastapi import FastAPI
-from .models.machine import Machine
-from .data.machines import machine_list
+from .models.models import DataModel
+from .data.dataModels import dataModel_list #come from db
 
 
 app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "API de serviços de máquinas"}
+    return {"message": "Integração ESP 32 to Maria DB"}
 
-@app.get("/machines/")
-async def read_machines():
-    return machine_list
+@app.get("/dataModels/")
+async def read_dataModel():
+    return dataModel_list
 
-@app.get("/machines/{machine_id}")
-async def read_machine(machine_id: int):
-    return (machine for machine in machine_list if machine.id == machine_id)
+@app.get("/dataModels/{dataModel_id}")
+async def read_dataModel(dataModel_id: int):
+    return (dataModel for dataModel in dataModel_list if dataModel.id == dataModel_id)
 
-@app.post("/machines/")
-async def create_machine(machine: Machine):
-    machine_list.append(machine)
-    return machine
+@app.post("/dataModels/")
+async def create_dataModel(dataModel: DataModel):
+    dataModel_list.append(dataModel)
+    return dataModel
 
-@app.put("/machines/{machine_id}")
-async def update_machine(machine_id: int, machine: Machine):
-    for m in machine_list:
-        if m.id == machine_id:
-            m.name = machine.name
-            m.status = machine.status
-            m.latitude = machine.latitude
-            m.longitude = machine.longitude
-            m.last_updated = machine.last_updated
-            m.created = machine.created
-    return (machine for machine in machine_list if machine.id == machine_id)
+@app.put("/dataModels/{dataModel_id}")
+async def update_dataModel(dataModel_id: int, dataModel: DataModel):
+    for m in dataModel_list:
+        if m.id == dataModel_id:
+            m.name = dataModel.name
+            m.status = dataModel.status
+            m.latitude = dataModel.latitude
+            m.longitude = dataModel.longitude
+            m.last_updated = dataModel.last_updated
+            m.created = dataModel.created
+    return (dataModel for dataModel in dataModel_list if dataModel.id == dataModel_id)
 
-@app.patch("/machines/{machine_id}")
-async def delete_machine(machine_id: int):
-    for m in machine_list:
-        if m.id == machine_id:
-            machine_list.remove(m)
+@app.patch("/dataModels/{dataModel_id}")
+async def delete_dataModel(dataModel_id: int):
+    for m in dataModel_list:
+        if m.id == dataModel_id:
+            dataModel_list.remove(m)
     return []
 
