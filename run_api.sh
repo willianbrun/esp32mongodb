@@ -1,0 +1,1 @@
+uvicorn api.src.main:app --reload --host [your.ip.address]

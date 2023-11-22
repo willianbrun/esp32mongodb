@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "99e20015-65f3-4306-b161-b3329d97b049",
+		"name": "servicos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26212296",
+		"_collection_link": "https://orange-crater-212255.postman.co/workspace/2c9ab7b0-fe09-4cf4-8f77-147756eaa3ad/collection/26212296-99e20015-65f3-4306-b161-b3329d97b049?action=share&source=collection_link&creator=26212296"
+	},
+	"item": [
+		{
+			"name": "machines",
+			"item": [
+				{
+					"name": "Get all machines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/machines",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"machines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create machine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"name\": \"Homero\",\n    \"latitude\": 0.0,\n    \"longitude\": 0.0,\n    \"status\": \"working\",\n    \"last_updated\": \"2023-10-19T00:00:00\",\n    \"created\": \"2023-10-19T00:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/machines",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"machines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update machine",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"name\": \"Homero\",\n    \"latitude\": 0.0,\n    \"longitude\": 0.0,\n    \"status\": \"idle\",\n    \"last_updated\": \"2023-10-19T00:00:00\",\n    \"created\": \"2023-10-19T00:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/machines/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"machines",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get machine by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/machines/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"machines",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete machine",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/machines/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"machines",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bem vindo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
