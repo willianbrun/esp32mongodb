@@ -3,34 +3,36 @@
 #include <ArduinoJson.h>
 #include "../model/log.cpp"
 
-#define EAP_ANONYMOUS_IDENTITY "anonymous@tuke.sk" // anonymous@example.com, or you can use also nickname@example.com
-#define EAP_IDENTITY "178810"
-
 #define ADC_VREF_mV 3300.0 // in millivolt
-#define ADC_RESOLUTION 4096.0
+#define ADC_RESOLUTION 8192.0
+#define THIS_IS_A_POWER_PIN 14 // Just to have 3.3V power on the other side of ESP
+#define BUZZER_PIN 12          // ESP32 pin GPIO32 that connects to buzzer
+#define LED_PIN 26             // ESP32 pin GPIO32 that connects to led
+#define PIN_LM35 36            // ESP32 pin GPIO36 (ADC0) connected to LM35
+#define SENSOR_ERROR -3        // To compensate bad sensor (only for study, never for prod)
 
-#define BUZZER_PIN 32      // ESP32 pin GPIO32 that connects to buzzer
-#define PIN_LM35 36        // ESP32 pin GPIO36 (ADC0) connected to LM35
-#define MAX_TEMPERATURE 36 // Max temperature to active buzzer
+#define MAX_TEMPERATURE 20 // Max temperature to active alarm
 
 const char *ssid = "iPhone (13)";
 const char *passwd = "willian123";
-
 unsigned long lastTime = 0;
 unsigned long timerDelay = 5000;
-
 float temperature = 0;
+bool turnedAlarmOn = false;
 
-// Your Domain name with URL path or IP address with path
-// Inserção do URI (URL + URN) a acessar
 String uri = "http://172.20.10.8:8000/";
 
+// Metodos
 void acessaPOST(String URN, Log log);
 void readSensorDataAndAlarm();
 void alarmHighTemperature();
 
 void setup()
 {
+    pinMode(BUZZER_PIN, OUTPUT);
+    pinMode(LED_PIN, OUTPUT);
+    pinMode(LED_BUILTIN, OUTPUT);
+    digitalWrite(THIS_IS_A_POWER_PIN, HIGH);
     Serial.begin(9600);
     delay(1000);
     Serial.println();
@@ -57,7 +59,7 @@ void loop()
         readSensorDataAndAlarm();
         if (WiFi.status() == WL_CONNECTED)
         {
-            Log log = Log(temperature);
+            Log log = Log(temperature, turnedAlarmOn);
             acessaPOST("logs/", log);
         }
         else
@@ -76,19 +78,28 @@ void readSensorDataAndAlarm()
     float milliVolt = adcVal * (ADC_VREF_mV / ADC_RESOLUTION);
     // convert the voltage to the temperature in °C
     temperature = milliVolt / 10;
+    temperature += SENSOR_ERROR;
 
     if (temperature >= MAX_TEMPERATURE)
     {
+        turnedAlarmOn = true;
         alarmHighTemperature();
+    }
+    else
+    {
+        turnedAlarmOn = false;
     }
 }
 
 void alarmHighTemperature()
 {
     digitalWrite(BUZZER_PIN, HIGH);
+    digitalWrite(LED_PIN, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH);
     delay(1000);
     digitalWrite(BUZZER_PIN, LOW);
-    delay(2000);
+    digitalWrite(LED_PIN, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
 }
 
 void acessaPOST(String URN, Log log)
@@ -105,11 +116,10 @@ void acessaPOST(String URN, Log log)
     StaticJsonDocument<200> unmarshalledJson;
 
     unmarshalledJson["temperature"] = log.temperature;
+    unmarshalledJson["turned_alarm_on"] = log.turned_alarm_on;
 
     serializeJson(unmarshalledJson, marshalledJson);
     serializeJsonPretty(unmarshalledJson, prettyMarshalledJson);
-
-    Serial.println(prettyMarshalledJson);
 
     // Envia uma requisição com o método POST
     int httpResponseCode = http.POST(marshalledJson);
@@ -131,13 +141,11 @@ void acessaPOST(String URN, Log log)
             Serial.print("Erro no processamento da requisição ");
             Serial.println(httpResponseCode);
         }
-        timerDelay = 2000;
     }
     else
     {
         Serial.print("Erro de acesso ao Serviço: ");
         Serial.println(httpResponseCode);
-        timerDelay = 100;
     }
     // Free resources
     http.end();
