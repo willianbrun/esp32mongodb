@@ -1,1 +1,1 @@
-uvicorn api.src.main:app --reload --host 172.20.10.8
+uvicorn api.src.main:app --reload --host 192.168.5.15

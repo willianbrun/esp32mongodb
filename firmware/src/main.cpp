@@ -1,3 +1,4 @@
+#define EAP_PASSWORD "Baguvix1"  //password for account
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
@@ -13,14 +14,17 @@
 
 #define MAX_TEMPERATURE 20 // Max temperature to active alarm
 
-const char *ssid = "iPhone (13)";
-const char *passwd = "willian123";
+#define EAP_ANONYMOUS_IDENTITY "178810@upf.br" //anonymous@example.com, or you can use also nickname@example.com
+#define EAP_IDENTITY "178810"  //login
+
+const char* ssid = "Sou UPF";
+
 unsigned long lastTime = 0;
 unsigned long timerDelay = 5000;
 float temperature = 0;
 bool turnedAlarmOn = false;
 
-String uri = "http://172.20.10.8:8000/";
+String uri = "192.168.5.15";
 
 // Metodos
 void acessaPOST(String URN, Log log);
@@ -38,7 +42,9 @@ void setup()
     Serial.println();
     WiFi.disconnect(true);
     WiFi.mode(WIFI_STA);
-    WiFi.begin(ssid, passwd);
+    // WiFi.begin(ssid, passwd);
+    WiFi.begin(ssid, WPA2_AUTH_PEAP, EAP_ANONYMOUS_IDENTITY, EAP_IDENTITY, EAP_PASSWORD); //WITHOUT CERTIFICATE - WORKING WITH EXCEPTION ON RADIUS SERVER
+
 
     while (WiFi.status() != WL_CONNECTED)
     {

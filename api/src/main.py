@@ -15,21 +15,20 @@ try:
         user="178810",
         password="178810",
         # Internal
-        # host="10.0.235.199",
-        # port=3306,
+        host="10.0.235.199",
+        port=3306,
         # External
-        host="177.67.253.69",
-        port=53306,
+        # host="177.67.253.69",
+        # port=53306,
         database="178810",
     )
+    conn.autocommit = True
 except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     sys.exit(1)
 
 # Get Cursor
 cur = conn.cursor()
-
-
 @app.post("/logs/")
 async def new_log(log: Log):
     actual_datetime = datetime.datetime.now().astimezone()
