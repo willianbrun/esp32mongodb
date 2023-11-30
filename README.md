@@ -1,6 +1,6 @@
-# ESP 32 with FastAPI and Maria DB
+# ESP 32 with FastAPI and Mongo DB
 
-Trabalho prático 1 para a matéria de Database Of Things. O trabalho consiste na criação de uma API utilizando Python e FastAPI, assim como um cliente que rodará em uma ESP32 com o framework do arduino.
+Trabalho prático 2 para a matéria de Database Of Things. O trabalho consiste na criação de uma API utilizando Python e FastAPI, assim como um cliente que rodará em uma ESP32 com o framework do arduino.
 
 ## Aluno
 
