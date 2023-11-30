@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "temperature-monitor-957cd",
+  "private_key_id": "e36d78bac412dbf3b5b789d68ae4f314f916970e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCVpPB3tazslsCi\nUxbhPhVNHuh7hBMRjPZsegsD+zS5vV6XY8jIpIUYOfWT1hWhrsoyaMC4dxhDXftA\ncHup4K/GCEOt2rBmhY0xYa8uCTqR/d5k2ZSy2W35vHAZkJMj5600cXvg9l2BFQ5N\nfFHRP/13kfD1IEpv0UE7ujY0jDf/obGRyFeSHzBGANY6TknJNBMsUtQy4fLdCYn9\nF1F7wvF309iV3tOr9p6QL8VvRYVM3/f4Zp9mb7BYNIPmQ2PEUpS4q9U04a4M2l+Y\nKUZ+wrkbGCPj4kko5pPtp5qXQEZQ6PBakZoJjdc/FwzcEqyAVPKRFCKBEXnfMpPs\nSCIgso8dAgMBAAECggEAI+XU38q/yGOjo20ORItZnc4H1DWLQ38O0Ff4k4RsEhCZ\nA/UmgedhnD2vKT9GoioljDEv5jB/rA18C+nP6KEjWXy7C5Y2EeoAxHNcDE2fdM0z\nT/sYHk1lge7P73oMqiTWGooMvxsqtCACddkYYXuZyNjENnGAGdHXdcYGYdWvS023\nOyjY1YRR+UwUbrxhdgfeDQNx6PEfTb0cmcWYL6FSvAuu3LQ9bkdDJXQdb7LWbadk\nhZnx6HnqDKw+Ft+tGIAitjrJ33ZAtGycqIt/jMCkL+LFjClBP0UC+haeJcWEmrF/\nqCYVrk+ittcBiazVLX2Xr69miPxAC/y7vdkg6u15KwKBgQDF+GY97FG/Fp1kJj6s\nncsjCkyuJ05w7uZicyiYWrFJMSEPsIOCg89+gMiItNlDdSS+3CJMhSvtRztao0VE\nm3UiXe8tUFUy1Burg9GytMEESfVYN/kdYK6nXiEx89A1J8zkrW39LTKgQud3XD/h\nOs1tKov+soGOCS3/zv8oQ+TYpwKBgQDBgi2T/MDnbvlx4s6AXZkm5WJz11ai1UpJ\nQWtRCJ6HCzdh2y+gWdzuVc7/PrioMT6JuL46wd+FT1mxeID76UhYDxNx4nqM8XvE\n346KXXM2Al6bEQrUk2Yf0btf+jnL3wKWwkVlPxPeVqct/Z+JQu2CbrJPdNw5kbqO\n+cPOR2vOmwKBgQCX6b77MYahLcdk/HwHlaY1o0eoM/1bZ9deIKQ8FQwJ8CtAkOC5\nnE/y8Pvw+2Xk/9VMqDuhoGdO0uRW7wbOWMSPtKk+inB2apE5EhQuH8olcmNUaM8+\nndwoDnFGlaNlxr7Rk8vdBXvdwrk/vIhAWxEb/hQjQ/NqfNzReZQO39qR7QKBgHjl\njPZFVnwBUGU/r4Zxc8riSzVWlzEaktPbxGGXQfvbHRnNKB9FpYteHvpHRHUIdyry\nOh9Zmv2dysrfH67DW8hwetSPC8Pc51fj2BlIMz/OES9OYXbYNFiy3x8ipVNjHCn2\nbAbKdu5VMxO/vhmyr9LquAp+V0y8aFMFZrkM1CT7AoGAWV9ZWQwA9liztmQPbY3Q\nKz8x8r2tHbPfI5axb5ku+DhwLxfeeHgCASa6JmorGKV3OWVaqIBX0thzK1jUHgHm\nlUTHWWJKMNre22ysSJPfqSJHYfG3p8JFnv8eTXsaQh8ADFWr866W2O2bgCrvYX8w\nQ0gU9+xBF4rwxv5CmEcqbwE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-b8mku@temperature-monitor-957cd.iam.gserviceaccount.com",
+  "client_id": "100002075713292668077",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-b8mku%40temperature-monitor-957cd.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
